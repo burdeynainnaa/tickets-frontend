@@ -93,6 +93,7 @@ function checkAuthStatus() {
 
     if (accessToken) {
         authNav.innerHTML = `
+            <a href="cart.html">🛒 Кошик</a>
             <a href="profile.html">Мій профіль</a>
             <a href="#" id="logout-link" style="color: #94a3b8; text-decoration: none; transition: color 0.2s ease;">Вийти</a>
         `;
@@ -114,6 +115,7 @@ function checkAuthStatus() {
 
 document.addEventListener('DOMContentLoaded', () => {
     checkAuthStatus();
+    if (document.getElementById('events-container')) {
+        fetchEvents();
+    }
 });
-
-fetchEvents();
