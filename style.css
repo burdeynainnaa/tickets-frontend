@@ -324,3 +324,118 @@ body {
     color: #94a3b8;
     font-size: 13px;
 }
+
+.hero-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.filter-page-btn {
+    background-color: #7c3aed;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.filter-page-btn:hover {
+    background-color: #6d28d9;
+    transform: translateY(-1px);
+}
+
+.filter-card {
+    background: #1e1e2e;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #2d2d3f;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    margin-bottom: 32px;
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    align-items: end;
+}
+
+.form-group select {
+    background-color: #121216;
+    border: 1px solid #2d2d3f;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: #e2e8f0;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group select:focus {
+    border-color: #a855f7;
+}
+
+.filter-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.reset-filter-btn {
+    background-color: transparent;
+    color: #cbd5e1;
+    border: 1px solid #2d2d3f;
+    padding: 11px 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reset-filter-btn:hover {
+    border-color: #a855f7;
+    color: #f3e8ff;
+}
+
+.results-header h2 {
+    color: #d8b4fe;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 18px;
+}
+
+.card-footer-action {
+    margin-top: 16px;
+}
+
+.card-btn-link {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+@media (max-width: 1024px) {
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .filter-grid,
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+}
