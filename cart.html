@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Кошик — Eventify</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="index.html" class="logo">🎉 Eventify</a>
+                <nav class="nav-links">
+                    <a href="artists.html">Артисти</a>
+                    <a href="venues.html">Майданчики</a>
+                    <a href="about.html">Про нас</a>
+                    <span id="auth-nav" style="display: inline-flex; gap: 15px; margin-left: 10px;"></span>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-container">
+            <div class="event-detail-card">
+                <h1>🛒 Мій кошик</h1>
+
+                <div id="cart-error" class="global-error" style="display: none;"></div>
+                <div id="cart-success" class="global-success" style="display: none;"></div>
+
+                <div id="cart-container">
+                    <p style="color: #94a3b8;">Завантаження кошика...</p>
+                </div>
+
+                <div id="cart-summary" class="cart-summary" style="display: none;">
+                    <p class="cart-total">Загальна сума: <strong id="cart-total-price">0 грн</strong></p>
+                    <div class="event-buttons">
+                        <button id="checkout-btn" class="buy-ticket-btn">Оформити замовлення</button>
+                        <a href="index.html" class="back-btn">← Продовжити вибір подій</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>© 2026 Developed by Viktoria Matiitso</p>
+        </footer>
+
+        <script src="script.js"></script>
+        <script src="cart.js"></script>
+    </body>
+</html>
