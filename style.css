@@ -398,3 +398,39 @@ body {
     border-color: #a855f7;
     outline: none;
 }
+
+.order-card {
+    background: #171721;
+    border: 1px solid #2d2d3f;
+    border-left: 4px solid #a855f7;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #2d2d3f;
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 16px;
+}
+
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 14px;
+}
+
+.order-footer {
+    border-top: 1px solid #2d2d3f;
+    padding-top: 10px;
+    text-align: right;
+    color: #e2e8f0;
+    font-size: 15px;
+}
