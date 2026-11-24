@@ -1,4 +1,5 @@
 const CART_API_URL = 'http://127.0.0.1:8000/api/cart/';
+const ORDERS_API_URL = 'http://127.0.0.1:8000/api/orders/';
 
 document.addEventListener('DOMContentLoaded', () => {
     const accessToken = localStorage.getItem('access_token');
@@ -6,7 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'login.html?next=cart.html';
         return;
     }
-
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', checkoutOrder);
+    }
     fetchCart();
 });
 
@@ -113,5 +117,37 @@ async function removeCartItem(itemId, button) {
         errorDiv.style.display = 'block';
         button.disabled = false;
         button.textContent = 'Видалити';
+    }
+}
+
+async function checkoutOrder() {
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const errorDiv = document.getElementById('cart-error');
+    const successDiv = document.getElementById('cart-success');
+
+    errorDiv.style.display = 'none';
+    successDiv.style.display = 'none';
+    checkoutBtn.disabled = true;
+    checkoutBtn.textContent = 'Оформлення...';
+
+    try {
+        const response = await apiFetch(ORDERS_API_URL, { method: 'POST' });
+        const data = await response.json();
+
+        if (response.status === 201) {
+            successDiv.innerHTML = `Замовлення #${data.id} успішно оформлено! <a href="orders.html" style="color: #4ade80; text-decoration: underline;">Переглянути мої замовлення</a>`;
+            successDiv.style.display = 'block';
+            await fetchCart();
+        } else {
+            errorDiv.textContent = data.error || 'Не вдалося оформити замовлення.';
+            errorDiv.style.display = 'block';
+        }
+    } catch (error) {
+        console.error('Помилка оформлення замовлення:', error);
+        errorDiv.textContent = 'Не вдалося з\'єднатися з сервером.';
+        errorDiv.style.display = 'block';
+    } finally {
+        checkoutBtn.disabled = false;
+        checkoutBtn.textContent = 'Оформити замовлення';
     }
 }
