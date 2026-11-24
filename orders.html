@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Мої замовлення — Eventify</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-container">
+                <a href="index.html" class="logo">🎉 Eventify</a>
+                <nav class="nav-links">
+                    <a href="artists.html">Артисти</a>
+                    <a href="venues.html">Майданчики</a>
+                    <a href="about.html">Про нас</a>
+                    <span id="auth-nav" style="display: inline-flex; gap: 15px; margin-left: 10px;"></span>
+                </nav>
+            </div>
+        </header>
+        <main class="main-container">
+            <div class="event-detail-card">
+                <h1>📦 Мої замовлення</h1>
+                <div id="orders-error" class="global-error" style="display: none;"></div>
+                <div id="orders-container">
+                    <p style="color: #94a3b8;">Завантаження замовлень...</p>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <p>© 2026 Eventify</p>
+        </footer>
+        <script src="script.js"></script>
+        <script src="orders.js"></script>
+    </body>
+</html>
