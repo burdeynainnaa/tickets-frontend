@@ -53,8 +53,8 @@ function renderCart(items) {
 
     items.forEach(item => {
         const price = parseFloat(item.event.price);
-        const itemTotal = price * item.amount;
-        totalPrice += itemTotal;
+        const itemTotal = Number((price * item.amount).toFixed(2));
+        totalPrice = Number((totalPrice + itemTotal).toFixed(2));
 
         const eventDate = new Date(item.event.date);
         const formattedDate = eventDate.toLocaleString('uk-UA', {
