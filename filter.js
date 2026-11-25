@@ -38,12 +38,37 @@ async function loadFilterOptions() {
     }
 }
 
-function buildFilterUrl() {
+function validateFilterRanges(formData) {
+    const minPriceRaw = String(formData.get('min_price') || '').trim();
+    const maxPriceRaw = String(formData.get('max_price') || '').trim();
+
+    if (minPriceRaw !== '' && maxPriceRaw !== '') {
+        const minPrice = Number(minPriceRaw);
+        const maxPrice = Number(maxPriceRaw);
+        if (!Number.isNaN(minPrice) && !Number.isNaN(maxPrice) && minPrice > maxPrice) {
+            return 'Мінімальна ціна не може перевищувати максимальну.';
+        }
+    }
+
+    const dateFromRaw = String(formData.get('date_from') || '').trim();
+    const dateToRaw = String(formData.get('date_to') || '').trim();
+
+    if (dateFromRaw !== '' && dateToRaw !== '') {
+        const fromTs = new Date(dateFromRaw).getTime();
+        const toTs = new Date(dateToRaw).getTime();
+        if (!Number.isNaN(fromTs) && !Number.isNaN(toTs) && fromTs > toTs) {
+            return 'Початкова дата та час не можуть бути пізнішими за кінцеві.';
+        }
+    }
+
+    return null;
+}
+
+function buildFilterUrl(formData) {
     const params = new URLSearchParams();
-    const formData = new FormData(filterForm);
 
     for (const [key, rawValue] of formData.entries()) {
-        const value = rawValue.trim();
+        const value = String(rawValue).trim();
         if (!value) continue;
 
         if (key === 'date_from' || key === 'date_to') {
@@ -59,10 +84,19 @@ function buildFilterUrl() {
 }
 
 async function fetchFilteredEvents() {
+    const formData = new FormData(filterForm);
+    const validationMessage = validateFilterRanges(formData);
+
+    if (validationMessage) {
+        resultsCountEl.textContent = 'Перевірте параметри';
+        resultsContainer.innerHTML = `<p class="global-error">${validationMessage}</p>`;
+        return;
+    }
+
     resultsContainer.innerHTML = '<p>Пошук подій...</p>';
 
     try {
-        const url = buildFilterUrl();
+        const url = buildFilterUrl(formData);
         const response = await fetch(url);
 
         if (!response.ok) {
