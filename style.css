@@ -438,6 +438,21 @@ body {
     .events-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.form-group input[type="datetime-local"] {
+    color-scheme: dark;
+}
+
+.form-group input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.form-group input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
 
 .cart-item {
     background: #171721;
