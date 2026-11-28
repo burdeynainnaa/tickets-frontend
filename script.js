@@ -114,8 +114,46 @@ function checkAuthStatus() {
     }
 }
 
+function ensureHeaderSearchIcon() {
+    const navLinks = document.querySelector('.site-header .nav-links');
+    if (!navLinks || navLinks.querySelector('.nav-search-link')) return;
+
+    const searchLink = document.createElement('a');
+    searchLink.href = 'search.html';
+    searchLink.className = 'nav-search-link';
+    searchLink.setAttribute('aria-label', 'Пошук');
+    searchLink.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    `;
+
+    if (window.location.pathname.endsWith('/search.html')) {
+        searchLink.classList.add('active');
+    }
+
+    navLinks.insertBefore(searchLink, navLinks.firstChild);
+}
+
+function updateSiteFooter() {
+    const footer = document.querySelector('.site-footer');
+    if (!footer) return;
+
+    footer.innerHTML = `
+        <p>&copy; 2026 Developed by Viktoria Matiitso, Inna Burdeyna, Oleksandra Muratova</p>
+        <p class="footer-discord">
+            <a href="https://discord.gg/fVKG84xTsg" target="_blank" rel="noopener noreferrer" class="footer-discord-link">
+                💬 Приєднатися до Discord-спільноти та чат-бота Eventify
+            </a>
+        </p>
+    `;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     checkAuthStatus();
+    ensureHeaderSearchIcon();
+    updateSiteFooter();
     if (document.getElementById('events-container')) {
         fetchEvents();
     }
