@@ -443,6 +443,20 @@ body {
     text-align: center;
 }
 
+.form-group input[type="datetime-local"] {
+    color-scheme: dark;
+}
+
+.form-group input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+}
+
+.form-group input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
 .cart-item {
     background: #171721;
     border: 1px solid #2d2d3f;
@@ -553,7 +567,6 @@ body {
     font-size: 15px;
 }
 
-/* Сторінка пошуку */
 .search-page-box {
     background: #1e1e2e;
     border: 1px solid #2d2d3f;
