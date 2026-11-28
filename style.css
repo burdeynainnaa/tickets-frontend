@@ -563,3 +563,23 @@ body {
     color: #e2e8f0;
     font-size: 15px;
 }
+
+.site-footer p {
+    margin: 4px 0;
+}
+
+.footer-discord {
+    margin-top: 6px;
+}
+
+.footer-discord-link {
+    color: #d8b4fe;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-discord-link:hover {
+    color: #f3e8ff;
+    text-decoration: underline;
+}

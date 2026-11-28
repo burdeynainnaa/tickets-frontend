@@ -114,9 +114,16 @@ function checkAuthStatus() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    checkAuthStatus();
-    if (document.getElementById('events-container')) {
-        fetchEvents();
+document.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector(".site-footer");
+    if (footer) {
+        footer.innerHTML = `
+            <p>&copy; 2026 Developed by Viktoria Matiitso, Inna Burdeyna, Oleksandra Muratova</p>
+            <p class="footer-discord">
+                <a href="https://discord.gg/fVKG84xTsg" target="_blank" rel="noopener noreferrer" class="footer-discord-link">
+                    💬 Приєднатися до Discord-спільноти та чат-бота Eventify
+                </a>
+            </p>
+        `;
     }
 });
